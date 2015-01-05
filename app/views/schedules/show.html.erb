@@ -1,0 +1,11 @@
+<% content_for :masthead do %>
+    <h2>Schedules</h2>
+
+    <p>This schedule was created on <%= @schedule.created_at.stamp('March 02, 2014 at 2:00pm') %></p>
+<% end %>
+
+<% content_for :content do %>
+    <% if @schedule.status == 'Completed' %>
+        <%= render partial: 'timetable', locals: {schedule: @schedule, colors: @colors} %>
+    <% end %>
+<% end %>

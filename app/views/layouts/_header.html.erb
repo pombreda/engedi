@@ -1,0 +1,49 @@
+<div id="header">
+
+  <div class="container">
+
+    <a href="/" class="brand">Dashboard Admin</a>
+
+    <a href="javascript:;" class="btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+      <i class="icon-reorder"></i>
+    </a>
+
+    <div class="nav-collapse">
+      <ul id="main-nav" class="nav pull-right">
+        <li class="nav-icon <%= 'active' if controller? 'home' %>">
+          <a href="/">
+            <i class="icon-home"></i>
+            <span>Home</span>
+          </a>
+        </li>
+
+        <li class="dropdown <%= 'active' if controller? 'schedules' %>">
+          <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="icon-calendar"></i>
+            <span>Schedules</span>
+            <b class="caret"></b>
+          </a>
+
+          <ul class="dropdown-menu">
+            <li><%= link_to "Manage", schedules_path %></li>
+            <li><%= link_to "Create New", new_schedule_path %></li>
+          </ul>
+        </li>
+
+        <li class="dropdown <%= 'active' if controller? 'lecturers', 'courses', 'rooms' %>">
+          <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="icon-copy"></i>
+            <span>Resources</span>
+            <b class="caret"></b>
+          </a>
+
+          <ul class="dropdown-menu">
+            <li><%= link_to "Manage Lecturers", lecturers_path %></li>
+            <li><%= link_to "Manage Courses", courses_path %></li>
+            <li><%= link_to "Manage Rooms", rooms_path %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

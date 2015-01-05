@@ -1,0 +1,58 @@
+<% content_for :masthead do %>
+    <h2>Schedules</h2>
+
+    <p>You are currently have <%= @schedules.count %> schedules
+      created. <%= link_to "Click here", new_schedule_path %> to create a new one.</p>
+<% end %>
+
+<% content_for :content do %>
+
+    <div class="row-fluid">
+      <div class="span8">
+        <div class="m-t-10">
+          <% if @schedules.present? %>
+
+              <script type="text/javascript">
+                  $(function () {
+                      $('#scheduleList').dataTable();
+                  });
+              </script>
+
+              <table id="scheduleList" class="table table-bordered table-striped table-condensed">
+                <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Courses</th>
+                  <th>Rooms</th>
+                  <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @schedules.each do |c| %>
+                    <tr>
+                      <td><%= link_to c.name, schedule_path(c) %></td>
+                      <td><%= c.courses.count %></td>
+                      <td><%= c.rooms.count %></td>
+                      <td><%= c.status %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+              </table>
+          <% else %>
+              <strong>No schedules found.</strong>
+          <% end %>
+        </div>
+      </div>
+      <div class="span4">
+        <ul class="nav nav-tabs nav-stacked">
+          <li>
+            <%= link_to new_schedule_path do %>
+                <i class="icon-calendar"></i>
+                Create A New Schedule
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+<% end %>

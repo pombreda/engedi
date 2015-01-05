@@ -1,0 +1,23 @@
+<h1>Listing course_groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @course_groups.each do |course_group| %>
+      <tr>
+        <td><%= link_to 'Show', course_group %></td>
+        <td><%= link_to 'Edit', edit_course_group_path(course_group) %></td>
+        <td><%= link_to 'Destroy', course_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Course group', new_course_group_path %>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scheduler <%= yield :title if content_for? :title %></title>
+
+  <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>-->
+
+  <%= favicon_link_tag 'favicon.ico' %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= yield :styles %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if flash.present? && flash[:message].present? %>
+    <script type="text/javascript">
+        <% flash_m.each do |m| -%>
+        $.gritter.add(<%= raw m %>);
+        <% end -%>
+    </script>
+<% end %>
+
+<div id="wrapper">
+
+  <%= render partial: 'layouts/header' %>
+
+  <div id="masthead">
+    <div class="container">
+      <div class="masthead-pad">
+        <div class="masthead-text">
+
+          <% if content_for? :masthead %>
+
+              <%= yield :masthead %>
+
+          <% else %>
+              <h2>Welcome</h2>
+
+              <p>You are currently have <%= @schedules.count %> schedules
+                created. <%= link_to "Click here", new_schedule_path %> to create a new one.</p>
+
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="content">
+    <div class="container">
+
+      <%= yield :content %>
+
+    </div>
+  </div>
+
+</div>
+
+<%= render partial: "layouts/footer" %>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<% content_for :masthead do %>
+    <h2>Courses</h2>
+
+    <p>The importer allows you to bulk create courses from an excel file.</p>
+<% end %>
+
+<% content_for :content do %>
+    <form action="<%= import_courses_path %>" method="post" enctype="multipart/form-data" class="form-horizontal form-validate">
+      <%= hidden_field_tag(request_forgery_protection_token.to_s, form_authenticity_token) %>
+      <fieldset>
+        <div class="control-group">
+          <label class="control-label" for="name">Excel File</label>
+          <div class="controls">
+            <input type="file" class="input-large required" name="file" id="file">
+          </div>
+        </div>
+
+        <div class="form-actions bg-transparent">
+          <button type="submit" class="btn btn-primary">Import</button>
+        </div>
+      </fieldset>
+    </form>
+<% end %>

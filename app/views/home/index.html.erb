@@ -1,0 +1,42 @@
+<% content_for :content do %>
+
+    <div class="row">
+      <div class="span8">
+        <div class="m-t-10">
+          <% if @schedules.present? %>
+          <% else %>
+              <strong>No schedules found.</strong>
+          <% end %>
+        </div>
+      </div>
+      <div class="span4">
+        <ul class="nav nav-tabs nav-stacked">
+          <li>
+            <%= link_to new_schedule_path do %>
+                <i class="icon-calendar"></i>
+                Create A New Schedule
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_lecturer_path do %>
+                <i class="icon-user"></i>
+                Add A Lecturer
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_course_path do %>
+                <i class="icon-book"></i>
+                Add A Course
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_room_path do %>
+                <i class="icon-sign-blank"></i>
+                Create A New Room
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+<% end %>

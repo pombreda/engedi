@@ -1,0 +1,66 @@
+<% content_for :masthead do %>
+    <h2>Courses</h2>
+
+    <p>You are currently have <%= @courses.count %> courses
+      created. <%= link_to "Click here", new_course_path %> to create a new one.</p>
+<% end %>
+
+<% content_for :content do %>
+
+    <div class="row-fluid">
+      <div class="span8">
+        <div class="m-t-10">
+          <% if @courses.present? %>
+
+              <script type="text/javascript">
+                $(function(){
+                    $('#courseList').dataTable();
+                });
+              </script>
+
+              <table id="courseList" class="table table-bordered table-strped table-condensed">
+                <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Code</th>
+                  <th>Lecturer</th>
+                  <th>Occurrence</th>
+                  <th>Duration</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @courses.each do |c| %>
+                    <tr>
+                      <td><%= c.name %></td>
+                      <td><%= c.code %></td>
+                      <td><%= c.lecturer.name if c.lecturer.present? %></td>
+                      <td><%= c.occurrence %> (per week)</td>
+                      <td><%= c.duration %> hour(s)</td>
+                    </tr>
+                <% end %>
+                </tbody>
+              </table>
+          <% else %>
+              <strong>No courses found.</strong>
+          <% end %>
+        </div>
+      </div>
+      <div class="span4">
+        <ul class="nav nav-tabs nav-stacked">
+          <li>
+            <%= link_to new_course_path do %>
+                <i class="icon-book"></i>
+                Add A Course
+            <% end %>
+          </li>
+          <li>
+            <%= link_to importer_courses_path do %>
+                <i class="icon-upload-alt"></i>
+                Import Courses
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+<% end %>

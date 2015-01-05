@@ -1,0 +1,59 @@
+                   Prefix Verb   URI Pattern                          Controller#Action
+                 lectures GET    /lectures(.:format)                  lectures#index
+                          POST   /lectures(.:format)                  lectures#create
+              new_lecture GET    /lectures/new(.:format)              lectures#new
+             edit_lecture GET    /lectures/:id/edit(.:format)         lectures#edit
+                  lecture GET    /lectures/:id(.:format)              lectures#show
+                          PATCH  /lectures/:id(.:format)              lectures#update
+                          PUT    /lectures/:id(.:format)              lectures#update
+                          DELETE /lectures/:id(.:format)              lectures#destroy
+                  periods GET    /periods(.:format)                   periods#index
+                          POST   /periods(.:format)                   periods#create
+               new_period GET    /periods/new(.:format)               periods#new
+              edit_period GET    /periods/:id/edit(.:format)          periods#edit
+                   period GET    /periods/:id(.:format)               periods#show
+                          PATCH  /periods/:id(.:format)               periods#update
+                          PUT    /periods/:id(.:format)               periods#update
+                          DELETE /periods/:id(.:format)               periods#destroy
+           importer_rooms GET    /rooms/importer(.:format)            rooms#importer
+             import_rooms POST   /rooms/import(.:format)              rooms#import
+                    rooms GET    /rooms(.:format)                     rooms#index
+                          POST   /rooms(.:format)                     rooms#create
+                 new_room GET    /rooms/new(.:format)                 rooms#new
+                edit_room GET    /rooms/:id/edit(.:format)            rooms#edit
+                     room GET    /rooms/:id(.:format)                 rooms#show
+                          PATCH  /rooms/:id(.:format)                 rooms#update
+                          PUT    /rooms/:id(.:format)                 rooms#update
+                          DELETE /rooms/:id(.:format)                 rooms#destroy
+       importer_lecturers GET    /lecturers/importer(.:format)        lecturers#importer
+         random_lecturers GET    /lecturers/random(.:format)          lecturers#random
+         import_lecturers POST   /lecturers/import(.:format)          lecturers#import
+                lecturers GET    /lecturers(.:format)                 lecturers#index
+                          POST   /lecturers(.:format)                 lecturers#create
+             new_lecturer GET    /lecturers/new(.:format)             lecturers#new
+            edit_lecturer GET    /lecturers/:id/edit(.:format)        lecturers#edit
+                 lecturer GET    /lecturers/:id(.:format)             lecturers#show
+                          PATCH  /lecturers/:id(.:format)             lecturers#update
+                          PUT    /lecturers/:id(.:format)             lecturers#update
+                          DELETE /lecturers/:id(.:format)             lecturers#destroy
+         importer_courses GET    /courses/importer(.:format)          courses#importer
+           import_courses POST   /courses/import(.:format)            courses#import
+                  courses GET    /courses(.:format)                   courses#index
+                          POST   /courses(.:format)                   courses#create
+               new_course GET    /courses/new(.:format)               courses#new
+              edit_course GET    /courses/:id/edit(.:format)          courses#edit
+                   course GET    /courses/:id(.:format)               courses#show
+                          PATCH  /courses/:id(.:format)               courses#update
+                          PUT    /courses/:id(.:format)               courses#update
+                          DELETE /courses/:id(.:format)               courses#destroy
+                schedules GET    /schedules(.:format)                 schedules#index
+                          POST   /schedules(.:format)                 schedules#create
+             new_schedule GET    /schedules/new(.:format)             schedules#new
+            edit_schedule GET    /schedules/:id/edit(.:format)        schedules#edit
+                 schedule GET    /schedules/:id(.:format)             schedules#show
+                          PATCH  /schedules/:id(.:format)             schedules#update
+                          PUT    /schedules/:id(.:format)             schedules#update
+                          DELETE /schedules/:id(.:format)             schedules#destroy
+                     root GET    /                                    home#index
+              switch_user GET    /switch_user(.:format)               switch_user#set_current_user
+switch_user_remember_user GET    /switch_user/remember_user(.:format) switch_user#remember_user

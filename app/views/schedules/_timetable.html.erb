@@ -1,0 +1,64 @@
+<script type="text/javascript">
+    $(function () {
+        $('.timetable').each(function (e) {
+            $(this).initialiseTT();
+            $(this).resizeTimetable();
+        });
+    });
+</script>
+
+<div class="timetable" data-days="5" data-hours="10">
+  <ul class="tt-events">
+    <% schedule.lectures.each do |l| %>
+        <li class="tt-event btn-success" style="background-color: <%= "##{colors[l.course.id]}" %> !important;" data-id="<%= l.id %>" data-day="<%= l.start_period.day_index %>" data-start="<%= l.start_period.time_slot %>" data-duration="<%= l.duration %>">
+          <%= "#{l.course.name} (#{l.course.code})" %>
+          <%= raw "<br/>#{l.course.lecturer.name}" if l.course.lecturer.present? %>
+          <%= raw "<br/>#{l.room.code}" if l.room.present? %>
+        </li>
+    <% end %>
+  </ul>
+  <div class="tt-times">
+    <div class="tt-time" data-time="0">
+      1
+    </div>
+    <div class="tt-time" data-time="1">
+      2
+    </div>
+    <div class="tt-time" data-time="2">
+      3
+    </div>
+    <div class="tt-time" data-time="3">
+      4
+    </div>
+    <div class="tt-time" data-time="4">
+      5
+    </div>
+    <div class="tt-time" data-time="5">
+      6
+    </div>
+    <div class="tt-time" data-time="6">
+      Lunch
+    </div>
+    <div class="tt-time" data-time="7">
+      7
+    </div>
+    <div class="tt-time" data-time="8">
+      8
+    </div>
+    <div class="tt-time" data-time="9">
+      9
+    </div>
+  </div>
+  <div class="tt-days">
+    <div class="tt-day" data-day="0">
+      M<span class="hidden-phone">on</span></div>
+    <div class="tt-day" data-day="1">
+      T<span class="hidden-phone">ue</span></div>
+    <div class="tt-day" data-day="2">
+      W<span class="hidden-phone">ed</span></div>
+    <div class="tt-day" data-day="3">
+      T<span class="hidden-phone">hu</span></div>
+    <div class="tt-day" data-day="4">
+      F<span class="hidden-phone">ri</span></div>
+  </div>
+</div>
