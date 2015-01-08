@@ -1,8 +1,8 @@
 from mconstraint import *
 from models import *
+from pprint import pprint
 import sys
 import json
-from pprint import pprint
 
 
 def main(path):
@@ -24,7 +24,7 @@ def main(path):
         out['schedule'] = d['schedule_id']
 
         for c in d['courses']:
-            course = Course(c['code'], c['group'], c['lecturer'], random.choice([1,2]),
+            course = Course(c['code'], c['group'], c['lecturer'], random.choice([1, 2]),
                             c['occurrence'])
             courseList.append(course)
             problem.addVariable(course, periods)
@@ -32,6 +32,7 @@ def main(path):
     problem.addConstraint(GroupPeriodConstraint(), courseList)
     problem.addConstraint(LecturerMaxSlotConstraint(), courseList)
     problem.addConstraint(BreakConstraint(), courseList)
+    problem.addConstraint(LecturerSinglePeriodConstraint(), courseList)
 
     solution = None
     for _ in range(0, 5):
@@ -61,4 +62,4 @@ if __name__ == "__main__":
     if len(sys.argv) == 2:
         main(sys.argv[1])
     else:
-        main('C:\Sites\Scheduler\schedules\\r1420221538')
+        main('C:\Sites\Scheduler\schedules\\r1420615460')

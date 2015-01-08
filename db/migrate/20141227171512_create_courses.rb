@@ -5,6 +5,8 @@ class CreateCourses < ActiveRecord::Migration
       t.string :code
 
       t.integer :occurrence
+      t.integer :slot_lock_index
+      t.integer :day_lock_index
 
       t.float :duration
 

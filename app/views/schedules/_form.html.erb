@@ -50,10 +50,10 @@
           </div>
           <div class="tab-pane" id="courses">
             <% if @courses.present? %>
-                <table class="table table-condensed table-bordered">
+                <table class="table table-condensed table-bordered dataTable">
                   <thead>
                   <tr>
-                    <th><input type="checkbox" id="selectAll"/></th>
+                    <th data-bSortable="false"><input type="checkbox" id="selectAll"/></th>
                     <th>Course</th>
                     <th>Lecturer</th>
                   </tr>

@@ -193,6 +193,21 @@ class LecturerMaxSlotConstraint(Constraint):
         return True
 
 
+class LecturerSinglePeriodConstraint(Constraint):
+    def __call__(self, variables, domains, assignments, forwardcheck=False,
+                 _unassigned=Unassigned):
+        lecturerPeriod = {}
+        for klass in assignments:
+            if klass.lecturer:
+                if not lecturerPeriod.has_key(klass.lecturer):
+                    lecturerPeriod[klass.lecturer] = []
+                for period in assignments[klass]:
+                    if period in lecturerPeriod[klass.lecturer]:
+                        return False
+                    lecturerPeriod[klass.lecturer].append(period)
+        return True
+
+
 class BreakConstraint(Constraint):
     def __init__(self, breakSlot=6):
         self.breakSlot = breakSlot

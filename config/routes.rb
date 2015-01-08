@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :course_sections
+
   resources :course_groups
 
   resources :lectures

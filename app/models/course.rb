@@ -6,6 +6,8 @@
 #  name            :string(255)
 #  code            :string(255)
 #  occurrence      :integer
+#  slot_lock_index :integer
+#  day_lock_index  :integer
 #  duration        :float
 #  course_group_id :integer
 #  created_at      :datetime

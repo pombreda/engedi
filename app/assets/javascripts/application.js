@@ -87,6 +87,30 @@
                     });
                 })
             }
+
+            if ($('table.dataTable').length) {
+                $('table.dataTable').each(function(){
+                    var bFilter = true;
+                    if($(this).hasClass('nofilter')){
+                        bFilter = false;
+                    }
+                    var columnSort = [];
+                    $(this).find('thead tr td').each(function(){
+                        if($(this).attr('data-bSortable') && $(this).attr('data-bSortable') == 'false') {
+                            columnSort.push({ "bSortable": false });
+                        } else {
+                            columnSort.push({ "bSortable": true });
+                        }
+                    });
+                    $(this).dataTable({
+                        "sPaginationType": "full_numbers",
+                        "bFilter": bFilter,
+                        "fnDrawCallback": function( oSettings ) {
+                        },
+                        "aoColumns": columnSort
+                    });
+                });
+            }
         }
 
         $.rails.allowAction = function (element) {
