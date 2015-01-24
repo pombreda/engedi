@@ -4,6 +4,10 @@ ruby '1.9.3'
 
 gem 'rails', '~> 4.1.8'
 
+# messaging
+gem 'thin'
+gem 'faye'
+
 # asset related gems
 gem 'sprockets', '~> 2.11.0'
 gem 'sass-rails', '~> 4.0.1'
@@ -57,8 +61,6 @@ group :development, :test do
   gem 'childprocess', '0.3.6'
   gem 'spring'
   gem 'better_errors', '~> 1.1.0'
-  gem 'binding_of_caller', '~> 0.7.2'
-  gem 'rails-dev-boost', '~> 0.3.0'
   gem 'faker', '~> 1.4.2'
   gem 'brakeman', '~> 2.6.1', require: false
   gem 'capistrano', '~> 3.2.1'
