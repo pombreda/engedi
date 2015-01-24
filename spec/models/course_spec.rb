@@ -2,16 +2,11 @@
 #
 # Table name: courses
 #
-#  id              :integer          not null, primary key
-#  name            :string(255)
-#  code            :string(255)
-#  occurrence      :integer
-#  slot_lock_index :integer
-#  day_lock_index  :integer
-#  duration        :float
-#  course_group_id :integer
-#  created_at      :datetime
-#  updated_at      :datetime
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  code       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 require 'spec_helper'

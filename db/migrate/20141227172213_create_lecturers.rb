@@ -5,8 +5,6 @@ class CreateLecturers < ActiveRecord::Migration
       t.string :code
       t.string :department
 
-      t.belongs_to :course
-
       t.timestamps
     end
   end

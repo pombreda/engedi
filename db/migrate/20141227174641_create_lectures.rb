@@ -1,7 +1,7 @@
 class CreateLectures < ActiveRecord::Migration
   def change
     create_table :lectures do |t|
-      t.belongs_to :course
+      t.belongs_to :course_section
       t.belongs_to :room
 
       t.belongs_to :start_period, class_name: 'Period', foreign_key: 'start_period_id'

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  resources :sections
+
   resources :course_sections
-
   resources :course_groups
-
   resources :lectures
   resources :periods
 
@@ -29,6 +29,10 @@ Rails.application.routes.draw do
   end
 
   resources :schedules
+
+  get '/resources', :to => 'resources#index', :as => 'resources'
+  get '/resources/sync', :to => 'resources#sync', :as => 'resources_sync'
+  post '/resources/run_sync', :to => 'resources#run_sync', :as => 'resources_run_sync'
 
   # root path
   root 'home#index'

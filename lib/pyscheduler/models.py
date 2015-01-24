@@ -1,13 +1,12 @@
 class Course:
-    def __init__(self, code, group = 1, lecturer = "", hours = 1, type = "A"):
+    def __init__(self, code, section=1, lecturer="", periods=1):
         self.code = code
-        self.group = group
+        self.section = section
         self.lecturer = lecturer
-        self.hours = hours
-        self.type = type
+        self.periods = periods
 
     def __str__(self):
-        return self.code + "-Group " + str(self.group)
+        return self.code + "-Section " + str(self.section) + "-Periods " + str(self.periods)
 
 
 class Lecturer:
@@ -16,22 +15,6 @@ class Lecturer:
 
     def __unicode__(self):
         return self.code
-
-
-class Day:
-    def __init__(self, day_index = 0):
-        self.day_index = day_index
-
-    def __unicode__(self):
-        return self.day_index
-
-
-class Timeslot:
-    def __init__(self, timeslot_index):
-        self.timeslot_index = timeslot_index
-
-    def __unicode__(self):
-        return self.timeslot_index
 
 
 class Room:
@@ -43,19 +26,12 @@ class Room:
 
 
 class Period:
-    def __init__(self, day, timeslot):
-        self.day = day
-        self.timeslot = timeslot
-        self.count = 1
-
-    def __add__(self, other):
-        self.count += other.count
-
-    def __iadd__(self, other):
-        self.count += other.count
+    def __init__(self, day_index, time_slot):
+        self.day_index = day_index
+        self.time_slot = time_slot
 
     def __str__(self):
-        return "Day " + str(self.day.day_index) + " - Slot " + str(self.timeslot.timeslot_index)
+        return "Day " + str(self.day_index) + " - Slot " + str(self.time_slot)
 
 
 class Lecture:

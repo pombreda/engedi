@@ -6,7 +6,6 @@
 #  name       :string(255)
 #  code       :string(255)
 #  department :string(255)
-#  course_id  :integer
 #  created_at :datetime
 #  updated_at :datetime
 #

@@ -6,14 +6,13 @@
 #  name       :string(255)
 #  code       :string(255)
 #  department :string(255)
-#  course_id  :integer
 #  created_at :datetime
 #  updated_at :datetime
 #
 
 class Lecturer < ActiveRecord::Base
 
-  belongs_to :course
+  has_many :course_sections
 
   validates :name, presence: true
   validates :code, presence: true, uniqueness: true

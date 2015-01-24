@@ -1,6 +1,6 @@
-<%= form_for(@course) do |f| %>
-  <% if @course.errors.any? %>
-    <div id="error_explanation">
+<%= form_for :course, class: 'form-horizontal form-validate' do |f| %>
+  <% if @course.present? and @course.errors.any? %>
+    <div id="alert alert-danger">
       <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
 
       <ul>

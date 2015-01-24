@@ -1,0 +1,44 @@
+<% content_for :masthead do %>
+    <h2>Resources</h2>
+<% end %>
+
+<% content_for :content do %>
+
+    <div class="row-fluid">
+      <div class="span8">
+        <div class="m-t-10">
+          <table class="table table-bordered table-striped">
+            <tbody>
+            <tr>
+              <td><strong>Courses</strong></td>
+              <td><%= Course.all.size %></td>
+            </tr>
+            <tr>
+              <td><strong>Lecturers</strong></td>
+              <td><%= Lecturer.all.size %></td>
+            </tr>
+            <tr>
+              <td><strong>Course Sections</strong></td>
+              <td><%= CourseSection.all.size %></td>
+            </tr>
+            <tr>
+              <td><strong>Rooms</strong></td>
+              <td><%= Room.all.size %></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="span4">
+        <ul class="nav nav-tabs nav-stacked">
+          <li>
+            <%= link_to resources_sync_path do %>
+                <i class="icon-refresh"></i>
+                Sync Resources
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+<% end %>

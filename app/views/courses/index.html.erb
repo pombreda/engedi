@@ -23,7 +23,6 @@
                 <tr>
                   <th>Name</th>
                   <th>Code</th>
-                  <th>Lecturer</th>
                   <th>Occurrence</th>
                   <th>Duration</th>
                 </tr>
@@ -33,7 +32,6 @@
                     <tr>
                       <td><%= c.name %></td>
                       <td><%= c.code %></td>
-                      <td><%= c.lecturer.name if c.lecturer.present? %></td>
                       <td><%= c.occurrence %> (per week)</td>
                       <td><%= c.duration %> hour(s)</td>
                     </tr>

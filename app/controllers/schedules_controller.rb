@@ -13,28 +13,21 @@ class SchedulesController < ApplicationController
   end
 
   def new
-    @courses = Course.all
   end
 
   def edit
   end
 
   def create
-    name = params[:name]
-    courses = params[:course]
+    name = params[:schedule][:name]
 
-    if name.present? && courses.present?
+    if name.present?
       s = Schedule.new
       s.name = name
       s.status = Schedule::STATUS_IN_PROGRESS
-
-      courses.each do |c|
-        s.courses << Course.find(c)
-      end
-
       s.save
-      write_schedule_to_file s
 
+      write_schedule_to_file s
       run_scheduler s
 
       Thread.new do
@@ -81,13 +74,13 @@ class SchedulesController < ApplicationController
 
   def schedule_to_json(schedule)
     h = {schedule_id: schedule.id, courses: []}
-    schedule.courses.each do |c|
+    sections = CourseSection.joins(:section).where('section_id=19')
+    sections.each do |s|
       h[:courses] << {
-          code: c.code,
-          lecturer: c.lecturer.present? ? c.lecturer.code : '',
-          group: c.course_group.name,
-          occurrence: c.occurrence,
-          duration: c.duration
+          code: s.course.code,
+          section: s.section.id,
+          lecturer: '',
+          periods: s.periods
       }
     end
     h.to_json

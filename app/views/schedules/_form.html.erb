@@ -1,78 +1,19 @@
 <script type="text/javascript">
-    $(function () {
-        $('#selectAll').on('click', function () {
-            $('.course').prop('checked', $(this).is(':checked'));
-        });
-    });
 </script>
 
-<form action="<%= schedules_path %>" method="post" class="form-horizontal form-validate">
-  <%= hidden_field_tag(request_forgery_protection_token.to_s, form_authenticity_token) %>
+<%= form_for :schedule, url: schedules_path, method: :post, class: 'form-horizontal form-validate' do |f| %>
+    <div class="control-group">
+      <%= f.label :name  %>
 
-  <div class="form-actions text-center" style="margin-top:0">
-    <input type="submit" class="btn btn-primary" value="Generate Schedule">
-  </div>
-
-  <div class="row-fluid">
-    <div class="tabbable">
-      <div class="span3">
-
-        <ul class="nav nav-tabs nav-stacked">
-          <li class="active">
-            <a href="#general" data-toggle="tab">
-              <i class="icon-cogs"></i>
-              General
-              <i class="icon-chevron-right"></i>
-            </a>
-          </li>
-          <li class="">
-            <a href="#courses" data-toggle="tab">
-              <i class="icon-book"></i>
-              Courses
-              <i class="icon-chevron-right"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="span9">
-        <div class="tab-content">
-          <div class="tab-pane active" id="general">
-
-            <div class="control-group">
-              <label class="control-label" for="name"><strong>Name</strong></label>
-
-              <div class="controls">
-                <input type="text" class="input-large required" name="name" id="name">
-              </div>
-            </div>
-
-          </div>
-          <div class="tab-pane" id="courses">
-            <% if @courses.present? %>
-                <table class="table table-condensed table-bordered dataTable">
-                  <thead>
-                  <tr>
-                    <th data-bSortable="false"><input type="checkbox" id="selectAll"/></th>
-                    <th>Course</th>
-                    <th>Lecturer</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <% @courses.each do |c| %>
-                      <tr>
-                        <td><input type="checkbox" class="course" name="course[]" value="<%= c.id %>"/></td>
-                        <td><%= c.name %></td>
-                        <td><%= c.lecturer.name if c.lecturer.present? %></td>
-                      </tr>
-                  <% end %>
-                  </tbody>
-                </table>
-            <% end %>
-          </div>
-        </div>
+      <div class="controls">
+        <%= f.text_field :name, class: 'input-large required' %>
       </div>
     </div>
-  </div>
 
-</form>
+    <div class="control-group">
+      <div class="controls">
+        <%= f.submit "Generate Schedule", class: "btn btn-primary" %>
+      </div>
+    </div>
+
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107073049) do
+ActiveRecord::Schema.define(version: 20150114233848) do
 
   create_table "course_groups", force: true do |t|
     t.string   "name"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20150107073049) do
   end
 
   create_table "course_sections", force: true do |t|
+    t.integer  "periods"
+    t.integer  "slot_lock_index"
+    t.integer  "day_lock_index"
+    t.integer  "course_id"
+    t.integer  "section_id"
+    t.integer  "lecturer_id"
+    t.integer  "linked_course_section_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -27,11 +34,6 @@ ActiveRecord::Schema.define(version: 20150107073049) do
   create_table "courses", force: true do |t|
     t.string   "name"
     t.string   "code"
-    t.integer  "occurrence"
-    t.integer  "slot_lock_index"
-    t.integer  "day_lock_index"
-    t.float    "duration"
-    t.integer  "course_group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,13 +42,12 @@ ActiveRecord::Schema.define(version: 20150107073049) do
     t.string   "name"
     t.string   "code"
     t.string   "department"
-    t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "lectures", force: true do |t|
-    t.integer  "course_id"
+    t.integer  "course_section_id"
     t.integer  "room_id"
     t.integer  "start_period_id"
     t.integer  "end_period_id"
@@ -88,6 +89,14 @@ ActiveRecord::Schema.define(version: 20150107073049) do
     t.string   "name"
     t.string   "folder"
     t.integer  "break_slot"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sections", force: true do |t|
+    t.string   "level"
+    t.string   "section"
+    t.string   "level_designation"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
